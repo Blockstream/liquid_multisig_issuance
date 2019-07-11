@@ -65,7 +65,7 @@ Asset amount 0.00000020 == 20 satoshi with precision 0 -> 20 assets
 Asset amount 0.00000315 == 315 satoshi with precision 2 -> 3,15 assets
 Asset amount 1.00000000 ==  100000000 satoshi with precision 8 -> 1 assets
 
-- the domain connected with the issuance (you will need to publish a file in the folder .well_known of this server)
+- the domain connected with the issuance (you will need to publish a file in the folder .well-known of this server)
 
 Modify the variables in the file `issue.py` before calling the scripts.
 
@@ -124,7 +124,7 @@ echo "curl https://assets.blockstream.info/ --data-raw '{\"asset_id\":\"$ASSET\"
 echo "Authorize linking the domain name $DOMAIN to the Liquid asset $ASSET" > liquid-asset-proof-$ASSET
 ```
 
-Copy the generated file `liquid-asset-proof-...` in the folder `.well_known` of the same server specified in the contract.
+Copy the generated file `liquid-asset-proof-...` in the folder `.well-known` of the same server specified in the contract.
 
 Execute the script `register_asset.sh` or perform a simple curl call to inform the registry about the new issuance.
 
