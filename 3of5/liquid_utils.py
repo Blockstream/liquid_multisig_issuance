@@ -43,6 +43,7 @@ def generate():
     if network == 'regtest':
         serverURL = 'http://user1:pwd1@ijxvvsti25jg6fm6.onion:18891/wallet/wallet.dat'
         host = RPCHost(serverURL)
-        return(host.call('generate', 1))
+        address = host.call('getnewaddress')
+        return(host.call('generatetoaddress', 1, address))
     else:
         return(0)

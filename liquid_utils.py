@@ -24,6 +24,7 @@ def generate():
     if network == 'regtest':
         serverURL = 'http://username:password@127.0.0.1:18888/wallet/wallet.dat'
         host = RPCHost(serverURL)
-        return(host.call('generate', 1))
+        address = host.call('getnewaddress')
+        return(host.call('generatetoaddress', 1, address))
     else:
         return(0)

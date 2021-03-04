@@ -1,11 +1,11 @@
 # Issue Liquid assets on multisig addresses
 In this example, we will show how to create assets on Liquid in two 2-of-2 multisig addresses (one for the assets and one for the reissuance tokens).
 
-## Install Liquid
-Download Liquid from the [GitHub Releases page](https://github.com/ElementsProject/elements/releases), version 0.17 is necessary to run the following scripts.
+## Install Elements
+Download Elements from the [GitHub Releases page](https://github.com/ElementsProject/elements/releases), the following scripts use Elements version 0.18.1.9.
 
 ## Create wallets and configure
-In order to configure your Liquid regtest and create the wallets you need to write a configuration file for the liquid instance.
+In order to configure your Elements regtest and create the wallets you need to write a configuration file for the Elements instance.
 ```
 chain=elementsregtest
 daemon=1
@@ -34,11 +34,11 @@ elementsregtest.wallet=wallet_8.dat
 elementsregtest.wallet=wallet_9.dat
 ```
 
-Save this file in the configuration folder (e.g. ~/.liquid/liquid.conf) and run the  liquidd executable.
+Save this file in the configuration folder (e.g. ~/.elements/elements.conf) and run the  elementsd executable.
 
 Configure the file `liquid_utils.py` with the correct username, password and IP address for each wallet involved.
 
-If you start with a fresh regtest you will need to move some funds from your wallet to your wallet_1. You can use the command `liquid-cli -rpcwallet=wallet.dat sendtoaddress $(liquid-cli -rpcwallet=wallet_1.dat getnewaddress) 1000` then you can generate a block `liquid-cli -rpcwallet=wallet.dat generate 1` and finally check balance of your wallet_1 `liquid-cli -rpcwallet=wallet_1.dat getbalance "*" 0 true`.
+If you start with a fresh regtest you will need to move some funds from your wallet to your wallet_1. You can use the command `elements-cli -rpcwallet=wallet.dat sendtoaddress $(elements-cli -rpcwallet=wallet_1.dat getnewaddress) 1000` then you can generate a block `elements-cli -rpcwallet=wallet.dat generate 1` and finally check balance of your wallet_1 `elements-cli -rpcwallet=wallet_1.dat getbalance "*" 0 true`.
 
 If your regtest wallet has funds or you are using mainnet you don't need to execute the previous commands.
 
@@ -108,7 +108,7 @@ echo "   Create the issuance transaction (information available in the file TX_I
 TX_ISSUANCE=$(python issue.py $ASSET_AMOUNT $MULTISIG_ASSET_ADDRESS $REISSUANCE_TOKEN_AMOUNT $MULTISIG_REISSUANCE_ADDRESS)
 echo $TX_ISSUANCE > TX_ISSUANCE.txt
 ```
-In this example are generated 20 asset tokens and 5 reissuance tokens (consider precision = 0), you can check balance of `wallet_1` using the command `liquid-cli -rpcwallet=wallet_1.dat getbalance "*" 0 true`.
+In this example are generated 20 asset tokens and 5 reissuance tokens (consider precision = 0), you can check balance of `wallet_1` using the command `elements-cli -rpcwallet=wallet_1.dat getbalance "*" 0 true`.
 
 In the file TX_ISSUANCE.txt you can read all the information about the issuance and you can find the contract JSON code fragment, we will use this code for the asset registry request.
 
@@ -158,7 +158,7 @@ echo $TX_SEND > TX_SEND.txt
 ```
 In this case I'm moving 1 asset token from my multisig (`wallet_1`, `wallet_2`, `wallet_3`, `wallet_4`, `wallet_5`) to a singlesig address controlled by `wallet_9`. The remaining assets are moved to a new multisig address. The asset id is found from the data saved from the previous step.
 
-You can check the balance of `wallet_9` using `liquid-cli -rpcwallet=wallet_9.dat getbalance`.
+You can check the balance of `wallet_9` using `elements-cli -rpcwallet=wallet_9.dat getbalance`.
 
 ## Reissuance assets from a multisig address
 If we want to issue more assets we can use the reissuance token, the reissuance.py script shows how we can reissue assets using tokens held in a multisig wallet.
