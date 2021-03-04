@@ -1,8 +1,2 @@
-https://github.com/ElementsProject/libwally-core/releases/download/release_0.6.9/wallycore-0.6.9-cp27-cp27mu-linux_x86_64.whl; 'linux' in sys_platform and python_version == '2.7'
-https://github.com/ElementsProject/libwally-core/releases/download/release_0.6.9/wallycore-0.6.9-cp35-cp35m-linux_x86_64.whl; 'linux' in sys_platform and python_version == '3.5'
-https://github.com/ElementsProject/libwally-core/releases/download/release_0.6.9/wallycore-0.6.9-cp36-cp36m-linux_x86_64.whl; 'linux' in sys_platform and python_version == '3.6'
-https://github.com/ElementsProject/libwally-core/releases/download/release_0.6.9/wallycore-0.6.9-cp27-cp27m-macosx_10_14_intel.whl; sys_platform == 'darwin' and python_version == '2.7'
-https://github.com/ElementsProject/libwally-core/releases/download/release_0.6.9/wallycore-0.6.9-cp37-cp37m-macosx_10_13_x86_64.whl; sys_platform == 'darwin' and python_version == '3.7'
-https://github.com/ElementsProject/libwally-core/releases/download/release_0.6.9/wallycore-0.6.9-cp36-cp36m-win_amd64.whl; sys_platform == 'win32' and python_version == '3.6'
-https://github.com/ElementsProject/libwally-core/archive/release_0.6.9.tar.gz;
-requests[SOCKS]==2.20.0
+wallycore==0.8.2
+requests[SOCKS]==2.25.1
