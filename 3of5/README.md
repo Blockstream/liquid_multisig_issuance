@@ -1,5 +1,10 @@
-# Issue Liquid assets on multisig addresses
-In this example, we will show how to create assets on Liquid in two 2-of-2 multisig addresses (one for the assets and one for the reissuance tokens).
+# Liquid assets on multisig addresses
+In this example, we will show how to:
+* create Liquid 3-of-5 multisig addresses
+* issue Liquid assets and reissuance tokens directly on such addresses,
+* register assets on the asset registry
+* send asset from the multisig output
+* reissue the asset
 
 ## Install Elements
 Download Elements from the [GitHub Releases page](https://github.com/ElementsProject/elements/releases), the following scripts use Elements version 0.18.1.9.
@@ -34,9 +39,9 @@ elementsregtest.wallet=wallet_8.dat
 elementsregtest.wallet=wallet_9.dat
 ```
 
-Save this file in the configuration folder (e.g. ~/.elements/elements.conf) and run the  elementsd executable.
+Save this file in the configuration folder (e.g. ~/.elements/elements.conf) and run the elementsd executable.
 
-Configure the file `liquid_utils.py` with the correct username, password and IP address for each wallet involved.
+Configure the file `liquid_utils.py` with the correct username, password and IP address for each wallet involved (which might need to be created and loaded).
 
 If you start with a fresh regtest you will need to move some funds from your wallet to your wallet_1. You can use the command `elements-cli -rpcwallet=wallet.dat sendtoaddress $(elements-cli -rpcwallet=wallet_1.dat getnewaddress) 1000` then you can generate a block `elements-cli -rpcwallet=wallet.dat generate 1` and finally check balance of your wallet_1 `elements-cli -rpcwallet=wallet_1.dat getbalance "*" 0 true`.
 
@@ -147,7 +152,7 @@ All the information needed can be obtained using the following script.
 echo "Send some tokens to a singlesig address"
 ASSET=$(echo $TX_ISSUANCE | jq -r .asset_id)
 AMOUNT="0.00000001"
-echo "   Get a receiving address (on wallet_3)"
+echo "   Get a receiving address (on wallet_9)"
 RECEIVING_ADDRESS=$(python get_address.py receiver | jq -r .address)
 echo "   Create a multisig change address"
 MULTISIG_ASSET_CHANGE=$(python create_multisig.py change)
