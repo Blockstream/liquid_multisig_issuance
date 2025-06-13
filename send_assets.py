@@ -16,7 +16,7 @@ asset_change = sys.argv[4]
 res = {}
 host_1, host_2, host_3 = connect()
 
-raw_tx = host_1.call('createrawtransaction', [], {address:amount}, 0, False, {address:asset})
+raw_tx = host_1.call('createrawtransaction', [], [{address:amount, 'asset':asset}], 0, False)
 bitcoin_change = host_1.call('getrawchangeaddress')
 funded_raw_tx = host_1.call('fundrawtransaction', raw_tx, {'includeWatching':True, 'changeAddress':{'bitcoin':bitcoin_change,asset:asset_change}})
 blinded_raw_tx = host_1.call('blindrawtransaction', funded_raw_tx['hex'])

@@ -23,7 +23,7 @@ res = {}
 host_1, host_2, host_3 = connect()
 
 # Prepare base transaction for reissuance
-base = host_1.call('createrawtransaction', [], {reissuance_token_address:reissuance_token_amount}, 0, False, {reissuance_token_address:reissuance_token})
+base = host_1.call('createrawtransaction', [], [{reissuance_token_address:reissuance_token_amount, "asset":reissuance_token}], 0, False)
 bitcoin_change = host_1.call('getrawchangeaddress')
 funded = host_1.call('fundrawtransaction', base, {'feeRate': feerate, 'includeWatching': True, 'changeAddress': {'bitcoin': bitcoin_change, reissuance_token: reissuance_token_change_address}})
 
