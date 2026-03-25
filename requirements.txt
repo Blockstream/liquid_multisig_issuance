@@ -1,2 +1,2 @@
 wallycore==0.8.2
-requests[SOCKS]==2.25.1
+requests[SOCKS]==2.33.0
